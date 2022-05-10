@@ -65,4 +65,50 @@ weightSlider = widget.newSlider {
 	end
 }
 
+weightGroup:insert(weightSlider)
+
+weightMinusButton = widget.newButton {
+	shape = 'roundedRect',
+	radius = 5,
+	width = 50, height = 50,
+	left = 19, top = 100,
+	fontSize = 40,
+	fillColor = { default={ 76 / 255 }, over={ 150 / 255 } },
+	labelColor = { default={ 1 }, over={ 0 } },
+	label = "-",
+
+	onPress = function(event)
+		if (weight > weightMin) then
+			weight = weight - 1
+			myWeight.text = weight
+			weightSlider:setValue(100 * (weight - weightMin) / (weightMax - weightMin))
+		end
+	end
+}
+
+weightPlusButton = widget.newButton {
+	shape = 'roundedRect',
+	radius = 5,
+	width = 50, height = 50,
+	left = 462, top = 100,
+	fontSize = 40,
+	fillColor = { default={ 76 / 255 }, over={ 150 / 255 } },
+	labelColor = { default={ 1 }, over={ 0 } },
+	label = "+",
+
+	onPress = function(event)
+		if (weight < weightMax) then
+			weight = weight + 1
+			myWeight.text = weight
+			weightSlider:setValue(100 * (weight - weightMin) / (weightMax - weightMin))
+		end
+	end
+}
+
+weightGroup:insert(weightMinusButton)
+weightGroup:insert(weightPlusButton)
+
+
+
+
 
