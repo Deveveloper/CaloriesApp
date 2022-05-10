@@ -109,6 +109,65 @@ weightGroup:insert(weightMinusButton)
 weightGroup:insert(weightPlusButton)
 
 
+-------------------------------------
+
+sex = "мужской"
+
+local sexGroup = display.newGroup()
+
+display.newRoundedRect(sexGroup, display.contentCenterX, 680, w, 120, 10):setFillColor(244 / 255)
+display.newText(sexGroup, "Укажите пол", 115, 660, "Obelix", 24)
+
+sexSelect = display.newText(sexGroup, sex, 105, 700, "Obelix", 18)
+sexSelect:setFillColor(100 / 255)
+
+maleOn = display.newImage(sexGroup, "male_active.png", 300, 680)
+maleOff = display.newImage(sexGroup, "male.png", 300, 680)
+
+femaleOn = display.newImage(sexGroup, "female_active.png", 440, 680)
+femaleOff = display.newImage(sexGroup, "female.png", 440, 680)
+
+if(sex == "мужской") then
+	maleOff.isVisible = false
+	femaleOn.isVisible = false
+else
+	maleOn.isVisible = false
+	femaleOff.isVisible = false
+end
+
+function selectMale(event)
+	if(event.phase == "began") then
+		sex = "мужской"
+		sexSelect.text = sex
+		maleOn.isVisible = true
+		maleOff.isVisible = false
+		femaleOn.isVisible = false
+		femaleOff.isVisible = true
+	end
+	return true
+end
+
+function selectFemale(event)
+	if(event.phase == "began") then
+		sex = "женский"
+		sexSelect.text = sex
+		maleOn.isVisible = false
+		maleOff.isVisible = true
+		femaleOn.isVisible = true
+		femaleOff.isVisible = false
+	end
+	return true
+end
+
+maleOff:addEventListener("touch", selectMale)
+femaleOff:addEventListener("touch", selectFemale)
+
+
+
+
+
+
+
 
 
 
