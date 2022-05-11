@@ -425,7 +425,7 @@ timePlusButton = widget.newButton {
 
 	display.newPolygon(activityGroup, 500, 790, {500, 452, 520, 452, 510, 466}):setFillColor(76 / 255)
 
-	activityText = display.newText(activityGroup, activity_name, display.contentCenterX, 790, "Obelix", 22)
+	activityText = display.newText(activityGroup, activity_name, display.contentCenterX, 790, native.system, 26)
 	activityText:setFillColor(76 / 255)
 
 	activityGroup:addEventListener("touch",
@@ -438,6 +438,28 @@ timePlusButton = widget.newButton {
 		end
 		)
 
+	local buttonCalc = widget.newButton {
+		shape = 'roundedRect',
+		radius = 5,
+		width = w,
+		height = 70,
+		left = 10,
+		top = 870,
+		fillColor = { default={ 245 / 255, 77 / 255, 128 / 255 },
+		over={ 0, 149 / 255, 59 / 255 } },
+		labelColor = { default={ 1 }, over={ 1 } },
+		label = "Считать калории",
+		fontSize = 32,
+
+		 onPress = function(event)
+		 	composer.showOverlay("result", {
+		 		isModal = true,
+		 		effect = "fade",
+		 		time = 400,
+		 	})
+		  end
+		}
+
 	--Вставка в sceneGroup
 	sceneGroup:insert(weightGroup)
 	sceneGroup:insert(sexGroup)
@@ -445,6 +467,7 @@ timePlusButton = widget.newButton {
 	sceneGroup:insert(timeGroup)
 	sceneGroup:insert(heightGroup)
 	sceneGroup:insert(activityGroup)
+	sceneGroup:insert(buttonCalc)
 
 end
 
