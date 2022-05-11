@@ -2,7 +2,7 @@ local composer = require("composer")
 local scene = composer.newScene();
 
 function scene:show(event)
-	local sceneGroup = self.view;
+	local sceneGroup = self.view
 
 	local widget = require("widget")
 
@@ -419,12 +419,32 @@ timePlusButton = widget.newButton {
 	timeGroup:insert(timeMinusButton)
 	timeGroup:insert(timePlusButton)
 
+	local activityGroup = display.newGroup()
+
+	display.newRoundedRect(activityGroup, display.contentCenterX, 790, w, 60, 15):setFillColor(244/255)
+
+	display.newPolygon(activityGroup, 500, 790, {500, 452, 520, 452, 510, 466}):setFillColor(76 / 255)
+
+	activityText = display.newText(activityGroup, activity_name, display.contentCenterX, 790, "Obelix", 22)
+	activityText:setFillColor(76 / 255)
+
+	activityGroup:addEventListener("touch",
+		function(event)
+			composer.showOverlay("activity", {
+				isModal = true,
+				effect = "fade",
+				time = 400,
+			})
+		end
+		)
+
 	--Вставка в sceneGroup
 	sceneGroup:insert(weightGroup)
 	sceneGroup:insert(sexGroup)
 	sceneGroup:insert(ageGroup)
 	sceneGroup:insert(timeGroup)
 	sceneGroup:insert(heightGroup)
+	sceneGroup:insert(activityGroup)
 
 end
 
