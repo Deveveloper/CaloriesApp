@@ -1,10 +1,10 @@
 local composer = require("composer")
 
-weightMin = 40
+weightMin = 30
 weightMax = 140
 weight = 60
 
-ageMin = 18
+ageMin = 12
 ageMax = 98
 age = ageMin
 
