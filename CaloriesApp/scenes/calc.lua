@@ -430,7 +430,7 @@ timePlusButton = widget.newButton {
 
 	activityGroup:addEventListener("touch",
 		function(event)
-			composer.showOverlay("activity", {
+			composer.showOverlay("scenes.activity", {
 				isModal = true,
 				effect = "fade",
 				time = 400,
@@ -452,7 +452,7 @@ timePlusButton = widget.newButton {
 		fontSize = 32,
 
 		 onPress = function(event)
-		 	composer.showOverlay("result", {
+		 	composer.showOverlay("scenes.result", {
 		 		isModal = true,
 		 		effect = "fade",
 		 		time = 400,

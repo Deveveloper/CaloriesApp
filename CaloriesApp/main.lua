@@ -26,4 +26,4 @@ activity_name = "Ходьба 4 км/ч"
 activity_factor = 3
 activity_index = 147
 
-composer.gotoScene("calc")
+composer.gotoScene("scenes.calc")
