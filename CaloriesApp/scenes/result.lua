@@ -43,6 +43,8 @@ function scene:create(event)
 		display.newText(sceneGroup, "Результат",
 		display.contentCenterX, 230, "Obelix", 30)
 
+		display.newImage(sceneGroup, "apple_icon.png", 105, 230)
+
 		calc = calculator()
 		display.newText({
 			parent = sceneGroup,
