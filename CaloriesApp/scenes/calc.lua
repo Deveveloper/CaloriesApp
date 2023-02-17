@@ -1,8 +1,21 @@
 local composer = require("composer")
 local scene = composer.newScene();
+local json = require("json")
 
 function scene:show(event)
 	local sceneGroup = self.view
+
+	settings = loadSettings("settings.json")
+	if(settings) then
+		weight = settings.weight
+		height = settings.height
+		age = settings.age
+		sex = settings.sex
+		time = settings.time
+		activity_index = settings.activity_index
+		activity_name = settings.activity_name
+		activity_factor = settings.activity_factor
+	end
 
 	local widget = require("widget")
 
@@ -107,7 +120,6 @@ weightGroup:insert(weightPlusButton)
 
 -------------------------------------
 
-sex = "мужской"
 
 local sexGroup = display.newGroup()
 
@@ -460,6 +472,7 @@ timePlusButton = widget.newButton {
 		  end
 		}
 
+
 	--Вставка в sceneGroup
 	sceneGroup:insert(weightGroup)
 	sceneGroup:insert(sexGroup)
@@ -470,6 +483,20 @@ timePlusButton = widget.newButton {
 	sceneGroup:insert(buttonCalc)
 
 end
+
+function loadSettings(filename)
+			local path = system.pathForFile(filename, system.ResourceDirectory)
+			local contents = ""
+			local myTable = {}
+			local file = io.open(path, "r")
+			if(file) then
+				contents = file:read("*a")
+				myTable = json.decode(contents)
+				io.close(file)
+				return myTable
+			end
+			return nil
+	end
 
 scene:addEventListener("show", scene);
 return scene;

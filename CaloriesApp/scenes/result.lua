@@ -2,6 +2,7 @@ local composer = require("composer")
 local scene = composer.newScene();
 
 local widget = require("widget")
+local json = require("json")
 
 function scene:create(event)
 	local sceneGroup = self.view
@@ -64,6 +65,31 @@ function scene:create(event)
 		display.contentCenterX, 530, native.system, 32)
 		display.newText(sceneGroup, calc,
 		display.contentCenterX, 580, native.system, 52):setFillColor(0, 165 / 255, 80 / 255)
+
+		function saveSettings(t, fileName)
+			local path = system.pathForFile(filename, system.ResourceDirectory)
+			local file = io.open(path, "w") --w - это запись, r - это чтение
+			if(file) then
+				local contents = json.encode(t)
+				file:write(contents)
+				io.close(file)
+				return true
+			else
+				return false
+			end
+		end
+
+		settings = {}
+		settings.weight = weight
+		settings.height = height
+		settings.age = age
+		settings.time = time
+		settings.sex = sex
+		settings.activity_index = activity_index
+		settings.activity_name = activity_name
+		settings.activity_factor = activity_factor
+
+		saveSettings(settings, "settings.json")
 
 end
 

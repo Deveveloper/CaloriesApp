@@ -16,6 +16,8 @@ heightMin = 100
 heightMax = 200
 height = heightMin
 
+sex = "мужской"
+
 display.setStatusBar(display.HiddenStatusBar)
 display.setDefault("background", 37/255, 39/255, 46/255)
 display.setDefault("fillColor", 76 / 255)
